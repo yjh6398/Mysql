@@ -1,0 +1,38 @@
+Q1：触发器的基本操作有哪些？
+A：触发器（TRIGGER）是MySql的数据库对象之一，触发器的基本操作有创建触发器、查看触发器和删除触发器
+
+Q2：为什么要使用触发器？
+A：在具体开发项目时，经常会遇到以下情况：每当往学生表增加一条记录时，学生的总数就必须同时改变。即都需要在表发生改变时，自动地进行一些处理，这时就可以使用触发器处理数据库对象。
+MySql软件在触发如下语句时，就会自动执行所设置的操作：insert、update、delete。其他SQL语句不会触发触发器
+
+1.创建触发器
+   
+  create trigger trigger_name
+     before|after trigger_event
+        on table_name FOR EACH ROW trigger_STMT
+        
+trigger_event：INSERT|UPDATE|DELETE
+trigger_event:触发器事件
+trigger_STMT:触发器语句
+before|after：指明在触发器事件之前执行触发器语句，或是在触发器事件之后执行触发器语句
+
+例：
+   create trigger tri_diarytime
+      before INSERT
+        on t_dept FOR EACH ROW 
+                   insert into t_diary values(null,'t_dept',now())
+
+2.创建包含多条执行语句的触发器
+    create trigger trigger_name
+     before|after trigger_event
+        on table_name FOR EACH ROW
+                   BEGIN
+                      trigger_STNT
+                   END
+     BEGIN 和END 之间可以写多条触发器语句
+
+3.查看触发器
+     SHOW TRIGGERS
+
+4.删除触发器
+     DROP TRIGGER tri_name

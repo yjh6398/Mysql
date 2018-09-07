@@ -1,0 +1,125 @@
+1.创建表时创建普通索引
+create table table_name(
+  property_name  type,
+  .
+  .
+  property_name  type,
+  index|key 索引名（属性名 【长度】【desc|asc】）
+）；
+
+例：
+  create table tb_info(
+   id int,
+   dept_no varchar(20),
+   index index_id(id)
+);
+
+2.在已经存在的表上创建索引
+create index 索引名
+  on 表名 （属性名 【长度】【ASC|DESC】);
+
+例：
+  create index index_id
+   on tb_info (id);
+
+3.通过ALTER TABLE语句创建普通索引
+
+alter table table_name
+   add index 索引名 （属性名 【长度】【ASC|DESC】);
+例：
+   alter table tb_info
+      add index index_id (id);
+
+4.创建表的唯一索引
+  create table table_name(
+  property_name  type,
+  .
+  .
+  property_name  type,
+  unique index|key 索引名（属性名 【长度】【desc|asc】）
+）；
+
+5.在已经存在的表里创建唯一索引
+  create unique index 索引名
+  on 表名 （属性名 【长度】【ASC|DESC】);
+
+例：
+  create unique index index_id
+   on tb_info (id);
+
+6.通过ALTER TABLE语句创建唯一索引
+  alter table table_name
+    add unique index 索引名 （属性名 【长度】【ASC|DESC】);
+例：
+   alter table tb_info
+      add unique index index_id (id);
+
+7.创建全文索引
+create table table_name(
+  property_name  type,
+  .
+  .
+  property_name  type,
+  fulltext index|key 索引名（属性名 【长度】【desc|asc】）
+）；
+例：
+  create table tb_info(
+   id int,
+   dept_no varchar(20),
+   fulltext index index_id(id)
+);
+
+8.在已经存在的表中创建全文索引
+create fulltext index 索引名
+  on 表名 （属性名 【长度】【ASC|DESC】);
+
+例：
+  create fulltext index index_id
+   on tb_info (id);
+
+9.通过ALTER TABLE语句创建全文索引
+    alter table table_name
+    add fulltext index 索引名 （属性名 【长度】【ASC|DESC】);
+例：
+   alter table tb_info
+      add fulltext index index_id (id);
+
+10.创建表时创建多列索引
+
+create table table_name(
+  property_name  type,
+  .
+  .
+  property_name  type,
+  index|key 索引名（属性名1 【长度】【desc|asc】，....属性名2 【长度】【desc|asc】）
+）；
+
+例：
+  create table tb_info(
+   id int,
+   dept_no varchar(20),
+   index index_id(id，dept_no)
+);
+
+11.在已经存在的表中创建多列索引
+   create  index 索引名
+  on 表名 （属性名1 【长度】【ASC|DESC】，....属性名2 【长度】【ASC|DESC】);
+
+例：
+  create  index index_id
+   on tb_info (id，dept_no);
+
+12.通过ALTER TABLE语句创建多列索引
+  alter table table_name
+    add  index 索引名 （属性名1 【长度】【ASC|DESC】，.....属性名2 【长度】【ASC|DESC】);
+例：
+   alter table tb_info
+      add  index index_id (id,dept_no);
+
+13.删除索引
+   DROP index index_name
+     ON table_name
+
+
+
+  

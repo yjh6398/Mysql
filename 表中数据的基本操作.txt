@@ -1,0 +1,27 @@
+Q1：数据的基本操作
+A：CURD
+
+插入操作
+1.插入数据记录
+  insert into table_name (field1,field2,.....)
+        values(value1,value2,.....)
+2.插入多条数据记录
+  insert into table_name (field1,field2,.....)
+        values(value1,value2,.....)，
+              (value1,value2,.....)，
+              (value1,value2,.....)
+3.插入查询结果
+  insert into table_name (field1,field2,...)
+        select field1,field2,......from table_name2 
+               where CONDITION
+
+更新操作
+  update table_name 
+      set filed1=value1，
+          filed2=value2,
+          filed3=value3,
+       where condition
+
+删除记录
+  delete from table_name
+     where condition

@@ -1,0 +1,63 @@
+Q1:为什么使用视图？
+A：可以实现查询的简化，提高数据的安全性
+
+Q2:什么是视图？
+A：本质上是一种虚拟表，内容和真实的表相似，包含一系列带有名称的列和行的数据
+
+Q3：视图有什么特点？
+A：（1）视图的列可以来自于不同的表，是表的抽象和在逻辑意义上建立的新关系。
+   （2）视图是由基本表（实表）产生的表（虚表）
+   （3）视图的建立和删除不影响实表
+   （4）视图内容的添加、删除、更新直接影响基本表
+   （5）当视图来自多个基本表时，不允许添加和删除数据
+
+创建视图的语法形式
+ create view view_name
+    as  查询语句
+例如：
+   create view view_product
+    as select id,name from t_product
+创建完以上的视图后，查询视图
+   select * from view_product
+
+查看视图
+   （1）show tables语句查看视图名
+          USE database_name
+          SHOW TABLES
+    (2)show table status语句查看视图详细信息
+          show table status 【from db_name】【LIKE ‘pattern’】
+          例如：show table status from view
+    (3)show create view语句查看视图定义信息
+          show create view view_name;
+    (4)describe|desc语句查看视图设计信息
+          describe|desc view_name
+
+删除视图
+     drop view view_name;
+
+修改视图
+   修改视图的操作会直接影响实表
+   （1）create or replace view语句修改视图
+     create or replace view view_name
+         as 查询语句
+    (2)alter语句修改视图
+     alter　view view_name
+         as 查询语句
+
+利用视图操作基本表
+   （1）检索、查询数据
+     select * from view_name
+    (2)添加数据操作
+     insert into view_name 
+       values(【】,【】,...【】)
+    (3)删除数据操作
+     delete from view_name 
+       where name=?
+    (4)更新数据操作
+     update view_name
+       set price=5
+          where name='perl'
+      
+
+
+

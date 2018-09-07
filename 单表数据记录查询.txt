@@ -1,0 +1,80 @@
+Q1：数据的基本操作包括CURD
+A：插入数据操作-create，查询数据操作-read，更新数据记录操作-update，删除数据记录操作-delete
+
+1.简单数据记录查询
+  查所有
+  select * from table_name
+  查指定字段
+  select filed_name1 filed_name2 from table_name 
+
+2.避免重复数据查询
+  select DISTINCT filed_name1 filed_name2 from table_name
+
+3.条件数据记录查询
+  select filed_name1 filed_name2 from table_name WHERE CONDITION
+  此处的条件有多种，下面举几个例子
+  （1）多条件数据查询
+    &&
+   (2)范围查询
+    between vakue1 and value2
+   (3)不符合范围的条件查询
+    not between value1 and value2
+   (4)带IS NULL 关键字的空值查询
+    where filed IS NULL
+   (5)带IN关键字的集合查询
+    where filde IN(value1,value2.....)
+   (6)不在集合中的数据记录查询
+    where filed NOT IN(value1,value2.....)
+
+4.带LIKE关键字的记录查询
+   select filed1，filed2,...filed 
+     from table_name
+       where filed LIKE value
+  以下仅列举些许情况
+  (1)带有“%”的通配符查询
+     select ename from t_employee 
+       where ename LIKE 'A%'
+  (2)带有"_"通配符的查询
+     例如：要查询雇员名中第二个字母为A的全部雇员
+     select ename from table_name where ename LIKE '_A%'
+
+5.排序数据记录查询
+  SELECT filed1 filed2,...
+    from table_name
+      where  CONDITION
+        ORDER BY filed_name1【ASC|DESC】,filed_name1 【ASC|DESC】
+
+6.限制数据记录查询数量
+  通过关键字LIMIT来限制查询结果的数量，经常被用来分页
+  select filed1 filed2 filed3
+    from table_name
+       where CONDITION 
+          LIMIT OFFSET_START,ROW_COUNT
+  通过关键字LIMIT来限制数据查询结果数量，参数OFFSET_SATRT表示数据记录的起始偏移量（以第一行数据为基准），参数ROW_COUNT表示显示的行数
+
+7.统计函数和分组数据记录查询
+  MySQL支持的函数
+  (1)COUNT();
+  (2)AVG();
+  (3)SUM();
+  (4)MAX();
+  (5)MIN();
+  select function_name(filed_name)
+         from table_name
+           where condition
+
+8.分组数据查询—简单分组查询
+  select function_name()
+     from table_name
+       where condition 
+          GROUP BY filed_name
+
+9.分组数据查询—实现统计功能分组查询
+  select dept_name，GROUP_CANCAT(ename) as enames FROM table_name GROUP BY dept_name
+
+10.分组数据查询—实现HAVING子句限定分组查询
+  select function（filed）
+     from table_name 
+       where CONDITION1
+         GROUP BY filed1，filed2，...
+           HAVING CONDITION2

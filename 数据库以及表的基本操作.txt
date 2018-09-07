@@ -1,0 +1,74 @@
+创建数据库
+create database test;
+
+查看所有数据库
+show databases;
+
+选择数据库
+use database_name;
+
+删除数据库
+drop database test;
+
+创建数据表
+create table tb_info(
+id int NOT NULL|UNIQUE|PRIMARY KEY  AUTO_INCREMENT ,      /*非空 唯一 主键约束*/ /*设置字段值自动增加*/
+dname varchar(20) DEFAULT  'tom'  ,                        /*设置默认值*/
+loc varchar(40)
+);
+
+删除表
+Drop table table_name;
+查看表结构
+describe table_name;(友好界面)
+或者用
+show create table table_name;(不太友好的界面）
+
+修改表名
+alter table old_table_name rename to new_table_name;
+
+增加字段
+alter table table_name 
+  add 属性名 属性类型；
+
+在指定位置处增加字段
+alter table table_name
+  add 属性名 属性类型
+  after 属性名；
+
+删除字段
+alter table table_name
+  drop 属性名；
+
+修改字段的数据类型
+alter table table_name
+   modify 属性名 数据类型；
+
+同时修改字段的名字和属性
+alter table table_name
+   modify 旧属性名 新属性名 新数据类型
+
+调整指定字段的顺序至第一位desc 
+alter table table_name
+   modify 属性名 数据类型 FIRST
+
+调整指定字段处在某一字段的后面
+alter table table_anme
+   modify 属性名 数据类型 After 属性名
+
+创建两个表，设置外键约束
+
+创建表1
+create table t1(
+dept_no int PRIMARY KEY,   //必须设立主键约束
+dname varchar(30),
+loc varchar(40));
+创建表2
+create table t2(
+emp_no int primary key,
+dept_no int ,
+CONSTRAINT fk_deptno FOREIGN KEY(dept_no)
+references t1(dept_no));
+
+
+
